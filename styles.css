@@ -327,25 +327,31 @@ h1 {
   line-height: .96;
 }
 .section-heading > p, .shop-heading > p { max-width: 260px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
-.category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .category-card {
   position: relative;
-  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
   overflow: hidden;
-  padding: 20px;
-  border: 1px solid #dbd6ca;
+  padding: 0;
+  border: 2px solid #c9c2b0;
   border-radius: 24px;
   text-align: left;
   transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  will-change: transform;
+  transform: translateZ(0);
 }
-.category-card:hover { transform: translateY(-4px); border-color: var(--teal); box-shadow: var(--shadow-soft); }
-.category-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(248, 243, 233, .75); color: var(--teal-dark); }
-.category-content { position: absolute; left: 20px; bottom: 20px; z-index: 2; }
-.category-card h3 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -.05em; }
-.category-card p { margin: 4px 0 0; color: var(--ink-soft); font-size: 12px; }
-.category-art { position: absolute; right: -32px; bottom: -20px; z-index: 1; width: 190px; height: 145px; object-fit: contain; mix-blend-mode: multiply; opacity: .85; transition: transform .5s cubic-bezier(.2,.75,.25,1); }
-.category-card:hover .category-art { transform: scale(1.06) rotate(2deg); }
-.category-arrow { position: absolute; right: 20px; bottom: 20px; z-index: 2; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(248, 243, 233, .7); transition: transform .25s ease; }
+.category-card:hover { transform: translateY(-4px) translateZ(0); border-color: var(--teal); box-shadow: var(--shadow-soft); }
+.category-visual { position: relative; flex: 1 1 auto; min-height: 200px; overflow: hidden; }
+.category-icon { position: absolute; top: 18px; left: 18px; z-index: 2; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(248, 243, 233, .85); color: var(--teal-dark); }
+.category-content { position: relative; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 18px 20px 22px; background: inherit; }
+.category-text { display: flex; flex-direction: column; min-width: 0; }
+.category-text strong { display: block; margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -.05em; line-height: 1.08; color: var(--ink); word-wrap: break-word; }
+.category-text span { display: block; margin: 6px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.45; word-wrap: break-word; }
+.category-art { position: absolute; inset: 0; width: 100%; height: 100%; padding: 14px; object-fit: contain; object-position: center 65%; mix-blend-mode: multiply; opacity: .9; transition: transform .5s cubic-bezier(.2,.75,.25,1); will-change: transform; }
+.category-card:hover .category-art { transform: scale(1.06) rotate(1deg); }
+.category-arrow { position: relative; z-index: 2; flex: 0 0 auto; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: rgba(248, 243, 233, .9); transition: transform .25s ease; }
 .category-card:hover .category-arrow { transform: translateX(4px); }
 
 .shop-section { padding: 112px 0; background: var(--teal-dark); color: var(--oat); }
@@ -447,7 +453,7 @@ h1 {
   .desktop-nav { gap: 18px; }
   .hero-grid { grid-template-columns: 1fr 1fr; }
   .product-grid, .category-grid { grid-template-columns: repeat(2, 1fr); }
-  .category-card { min-height: 220px; }
+  .category-card { min-height: 300px; }
 }
 @media (max-width: 760px) {
   .container, .header-inner { width: min(100% - 40px, 640px); }
@@ -482,7 +488,7 @@ h1 {
   .brand-mark { width: 40px; height: 40px; }
   .icon-button { width: 36px; height: 36px; }
   .category-grid, .product-grid, .benefit-grid { grid-template-columns: 1fr; }
-  .category-card { min-height: 230px; }
+  .category-card { min-height: 280px; }
   .product-grid { gap: 14px; }
   .journal-disc { width: 270px; }
   .journal-ring { width: 235px; }
