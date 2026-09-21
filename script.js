@@ -60,10 +60,14 @@ function showToast(message) {
 function renderCategories() {
   $("#category-grid").innerHTML = categories.map((category) => `
     <button class="category-card" type="button" data-category="${category.name}" style="background:${category.color}">
-      <span class="category-icon">${icon(category.icon, 17)}</span>
-      <span class="category-content"><strong>${category.name}</strong><span>${category.detail}</span></span>
-      <img class="category-art" src="./${category.image}" alt="" />
-      <span class="category-arrow">${icon("arrow", 15)}</span>
+      <span class="category-visual">
+        <span class="category-icon">${icon(category.icon, 17)}</span>
+        <img class="category-art" src="./${category.image}" alt="" width="260" height="200" loading="lazy" decoding="async" />
+      </span>
+      <span class="category-content">
+        <span class="category-text"><strong>${category.name}</strong><span>${category.detail}</span></span>
+        <span class="category-arrow">${icon("arrow", 15)}</span>
+      </span>
     </button>
   `).join("");
   $$(".category-card").forEach((button) => button.addEventListener("click", () => {
